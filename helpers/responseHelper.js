@@ -1,6 +1,6 @@
-import HttpStatus from "../utils/StatusCodes";
+const HttpStatus = require("../utils/StatusCodes");
 
-export const sendError = (message, code) => {
+const sendError = (message, code) => {
   var error = {
     status: "ERROR",
     code: code,
@@ -10,7 +10,7 @@ export const sendError = (message, code) => {
   return error;
 };
 
-export const sendSuccess = (message, data = undefined) => {
+const sendSuccess = (message, data = undefined) => {
   var success = {
     status: "SUCCESS",
     code: HttpStatus.OK,
@@ -21,8 +21,10 @@ export const sendSuccess = (message, data = undefined) => {
   return success;
 };
 
-export const newError = (message, code) => {
+const newError = (message, code) => {
   const error = new Error(message);
   error.status = code;
   throw error;
 };
+
+module.exports = {sendError, newError, sendSuccess}

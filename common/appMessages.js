@@ -1,4 +1,4 @@
-export const AppMessages = {
+const AppMessages = {
   FAILURE: {
     INVALID_TOKEN_PROVIDED: "Invalid token provided.",
     INVALID_CREDENTIALS: "Invalid credentials provided.",
@@ -22,9 +22,12 @@ export const AppMessages = {
     TOKEN_REFRESHED: "Token Refreshed Successfully",
     DATA_FETCHED: "Data Retreived Successfully",
     BULK_CREATE_SUCCESS: "Bulk user creation done successfully",
+    BIRTHDAY_CELEBRANT_CREATED: "Birthday celebrant successfully created"
   },
   INFO: {
     INVALID_OPERATION: "Invalid operation.",
     EMPTY_TOKEN_HEADER: "Invalid authorization header",
   },
 };
+
+module.exports = AppMessages;
