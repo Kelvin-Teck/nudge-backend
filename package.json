@@ -12,13 +12,21 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@bull-board/api": "^5.21.4",
+    "@bull-board/express": "^5.21.4",
+    "@bull-board/ui": "^5.21.4",
+    "@tiptap/extension-bullet-list": "^2.6.6",
+    "amqplib": "^0.10.4",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
+    "bull": "^4.16.1",
+    "bullmq": "^5.12.13",
     "connect-redis": "^7.1.1",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.1.0",
     "cors": "^2.8.5",
+    "cron": "^3.1.7",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -33,12 +41,14 @@
     "mongo-store": "^0.0.2",
     "mongoose": "^8.6.0",
     "mysql2": "^3.11.0",
+    "node-cron": "^3.0.3",
     "node-mailer": "^0.1.1",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "pg": "^8.12.0",
     "pg-hstore": "^2.3.4",
+    "rabbitmq-client": "^4.6.0",
     "redis": "^4.7.0",
     "sequelize": "^6.37.3",
     "uuid": "^10.0.0"
@@ -47,6 +57,6 @@
     "nodemon": "^3.1.4"
   },
   "_moduleAliases": {
-    "@": "."
+    "@": "./"
   }
 }

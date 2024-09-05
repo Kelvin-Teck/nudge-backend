@@ -1,8 +1,7 @@
-const birthdayCelebrant = require('./birthdayCelebrantModel');
+const member = require('./memberModel');
 
 const db = {};
 
-db.BirthdayCelebrant = birthdayCelebrant
-
+db.member = member;
 
 module.exports = {db}

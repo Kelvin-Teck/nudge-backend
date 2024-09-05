@@ -14,16 +14,16 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: false }));
 // cors
 
 // routes importation
-const birthdayRoutes = require("./routes/birthdayRoutes");
+const memberRoutes = require("./routes/memberRoutes");
 
 // mongodb connection
-const { connectToDB } = require("./databases/");
+const { connectToDB } = require("./config/databases/");
 
 // check the status of the server
 app.get("/", (req, res) => res.send("Server is up and running!!!"));
 
 // Routes middleware
-app.use("/api/v1/birthday", birthdayRoutes);
+app.use("/api/v1/member/", memberRoutes);
 
 // app initialization
 app.listen(PORT, async () => {
