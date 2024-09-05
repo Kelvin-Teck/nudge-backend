@@ -7,12 +7,13 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT;
 const bodyParser = require("body-parser");
+const cors = require('cors');
 // Parse JSON bodies for all requests
 app.use(express.json({ extended: true }));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: false }));
 // cors
-
+app.use(cors());
 // routes importation
 const memberRoutes = require("./routes/memberRoutes");
 
