@@ -7,10 +7,10 @@ name: nudge-service
 on:
   push:
     branches:
-      - main # Triggers deployment on push to the main branch
+      - master # Triggers deployment on push to the master branch
   pull_request:
     branches:
-      - main # Optional: Triggers deployment on PR merge to main
+      - master # Optional: Triggers deployment on PR merge to master
 
   workflow_dispatch:
     # Inputs the workflow accepts.
@@ -63,4 +63,3 @@ jobs:
           -H 'Accept: application/json' \
           -H "Authorization: Bearer ${{process.env.RENDER_API_KEY}}" \
           https://api.render.com/v1/services/cr9rbrd6l47c73crs4q0/deploys
-          
