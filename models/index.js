@@ -1,7 +1,8 @@
-const member = require('./memberModel');
 
 const db = {};
 
-db.member = member;
+db.Member = require("./memberModel");
+db.User = require('./userModel');
+
 
 module.exports = {db}

@@ -1,30 +1,30 @@
 const { db } = require("../models");
 
 const createMember = async (data) => {
-  await db.member.create(data);
+  await db.Member.create(data);
 };
 
 const getAllMembers = async () => {
-  const allMembers = await db.member.find({});
+  const allMembers = await db.Member.find({}).sort({createdAt: -1});
 
   return allMembers;
 };
 
 const getSingleMemberById = async (id) => {
-  const memberInfo = await db.member.findById(id);
+  const memberInfo = await db.Member.findById(id);
 
   return memberInfo;
 };
 
 const getSingleMemberByIdAndUpdate = async (id, updateData) => {
-  await db.member.findByIdAndUpdate(id, updateData, {
+  await db.Member.findByIdAndUpdate(id, updateData, {
     new: true,
     runValidators: true,
   });
 };
 
 const getSingleMember = async (data) => {
-  const memberInfo = await db.member.findOne(data);
+  const memberInfo = await db.Member.findOne(data);
 
   return memberInfo;
 };

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "googleapis": "^143.0.0",
+    "ioredis": "^5.4.1",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",

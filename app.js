@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: false }));
 app.use(cors());
 // routes importation
 const memberRoutes = require("./routes/memberRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 // mongodb connection
 const { connectToDB } = require("./config/databases/");
@@ -24,7 +25,8 @@ const { connectToDB } = require("./config/databases/");
 app.get("/", (req, res) => res.send("Server is up and running!!!"));
 
 // Routes middleware
-app.use("/api/v1/member/", memberRoutes);
+app.use("/api/v1/member", memberRoutes);
+app.use('/api/v1/user', userRoutes )
 
 // app initialization
 app.listen(PORT, async () => {
