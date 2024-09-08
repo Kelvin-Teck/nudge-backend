@@ -1,5 +1,7 @@
 const AppMessages = require("../common/appMessages");
+const updateAllMembersQueue = require("../config/queue");
 const responseHelper = require("../helpers/responseHelper");
+const { addUpdateAllMembersToQueue } = require("../queues/memberQueues");
 const memberRepository = require("../repositories/memberRepository");
 const HttpStatus = require("../utils/StatusCodes");
 
@@ -73,12 +75,16 @@ const updateAllMembers = async (req, res) => {
   const updateData = req.body;
 
   const allMembers = await memberRepository.getAllMembers();
-
+  
   if (allMembers.length > 0) {
 
     for (const member of allMembers) {
-      await memberRepository.getSingleMemberByIdAndUpdate(member.id, updateData);
+      // await memberRepository.getSingleMemberByIdAndUpdate(member.id, updateData);
+
+      await addUpdateAllMembersToQueue(member.id, updateData);
+      
     }
+
   }else return responseHelper.newError(AppMessages.INFO.MEMBER_DOES_NOT_EXIST, HttpStatus.NOT_FOUND)
 }
 

@@ -14,6 +14,8 @@ const AppMessages = {
     INVALID_PHONE_NUMBER: "Please enter a valid phone number",
     MEMBER_UPDATE_FAIL: "Failed to update this Member",
     ALL_MEMBERS_UPDATE_FAIL: "Failed to update All Members",
+    USER_CREATE_FAIL: "Failed to Create User",
+    BULK_USER_CREATE_FAIL: "Failed to Create Bulk Users",
   },
   SUCCESS: {
     LOGIN: "Login successful.",
@@ -31,6 +33,8 @@ const AppMessages = {
     SINGLE_MEMBER_RETRIEVED_SUCCESS: "Member successfully retrieved",
     MEMBER_UPDATE_SUCCESS: "This Member has been updated successfully",
     ALL_MEMBERS_UPDATE_SUCCESS: "All Members have been updated successfully",
+    USER_CREATE_SUCCESS: "User Created Successfully",
+    BULK_USERS_CREATE_SUCCESS: "Bulk Users Created Successfully",
   },
   INFO: {
     INVALID_OPERATION: "Invalid operation.",
@@ -38,6 +42,7 @@ const AppMessages = {
     MEMBER_EXIST: "Sorry this Member already exist",
     MEMBER_DOES_NOT_EXIST: "Sorry this Member does not exist",
     EMAIL_EXISTS: "An account already exists with this email",
+    USER_EXIST: "An account already exists with this User",
   },
 };
 

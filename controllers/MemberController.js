@@ -1,5 +1,5 @@
 const HttpStatus = require("../utils/StatusCodes");
-const responseHelpers = require("../helpers/responseHelper");
+const responseHelper = require("../helpers/responseHelper");
 const AppMessages = require("../common/appMessages");
 const memberService = require("../services/memberService");
 
@@ -10,7 +10,7 @@ const getSingleMember = async (req, res) => {
     return res
       .status(HttpStatus.OK)
       .json(
-        responseHelpers.sendSuccess(
+        responseHelper.sendSuccess(
           AppMessages.SUCCESS.SINGLE_MEMBER_RETRIEVED_SUCCESS,
           response
         )
@@ -20,7 +20,7 @@ const getSingleMember = async (req, res) => {
       return res
         .status(error.status)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             `${AppMessages.FAILURE.SINGLE_MEMBER_RETRIEVED_FAIL} --> ${error.message}`,
             error.status
           )
@@ -30,7 +30,7 @@ const getSingleMember = async (req, res) => {
     return res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .json(
-        responseHelpers.sendError(
+        responseHelper.sendError(
           `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} --> ${error.message}`,
           HttpStatus.INTERNAL_SERVER_ERROR
         )
@@ -80,7 +80,7 @@ const createMember = async (req, res) => {
     return res
       .status(HttpStatus.OK)
       .json(
-        responseHelpers.sendSuccess(
+        responseHelper.sendSuccess(
           AppMessages.SUCCESS.MEMBER_CREATE_SUCCESS,
           response
         )
@@ -90,7 +90,7 @@ const createMember = async (req, res) => {
       return res
         .status(HttpStatus.CONFLICT)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             AppMessages.INFO.EMAIL_EXISTS,
             HttpStatus.CONFLICT
           )
@@ -101,7 +101,7 @@ const createMember = async (req, res) => {
       return res
         .status(HttpStatus.FORBIDDEN)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             AppMessages.FAILURE.INVALID_PHONE_NUMBER,
             HttpStatus.FORBIDDEN
           )
@@ -111,13 +111,13 @@ const createMember = async (req, res) => {
     if (error.status) {
       return res
         .status(error.status)
-        .json(responseHelpers.sendError(error.message, error.status));
+        .json(responseHelper.sendError(error.message, error.status));
     }
 
     return res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .json(
-        responseHelpers.sendError(
+        responseHelper.sendError(
           `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} - ${error.message}`,
           HttpStatus.INTERNAL_SERVER_ERROR
         )
@@ -132,7 +132,7 @@ const updateSingleMember = async (req, res) => {
     return res
       .status(HttpStatus.OK)
       .json(
-        responseHelpers.sendSuccess(
+        responseHelper.sendSuccess(
           AppMessages.SUCCESS.MEMBER_UPDATE_SUCCESS,
           response
         )
@@ -142,7 +142,7 @@ const updateSingleMember = async (req, res) => {
       return res
         .status(HttpStatus.CONFLICT)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             AppMessages.INFO.EMAIL_EXISTS,
             HttpStatus.CONFLICT
           )
@@ -153,7 +153,7 @@ const updateSingleMember = async (req, res) => {
       return res
         .status(HttpStatus.FORBIDDEN)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             AppMessages.FAILURE.INVALID_PHONE_NUMBER,
             HttpStatus.FORBIDDEN
           )
@@ -164,7 +164,7 @@ const updateSingleMember = async (req, res) => {
       return res
         .status(error.status)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             `${AppMessages.FAILURE.MEMBER_UPDATE_FAIL} --> ${error.message}`,
             error.status
           )
@@ -174,7 +174,7 @@ const updateSingleMember = async (req, res) => {
     return res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .json(
-        responseHelpers.sendError(
+        responseHelper.sendError(
           `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} --> ${error.message}`,
           HttpStatus.INTERNAL_SERVER_ERROR
         )
@@ -189,7 +189,7 @@ const updateAllMembers = async (req, res) => {
     return res
       .status(HttpStatus.OK)
       .json(
-        responseHelpers.sendSuccess(
+        responseHelper.sendSuccess(
           AppMessages.SUCCESS.ALL_MEMBERS_UPDATE_SUCCESS,
           response
         )
@@ -199,7 +199,7 @@ const updateAllMembers = async (req, res) => {
       return res
         .status(HttpStatus.CONFLICT)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             AppMessages.INFO.EMAIL_EXISTS,
             HttpStatus.CONFLICT
           )
@@ -210,7 +210,7 @@ const updateAllMembers = async (req, res) => {
       return res
         .status(HttpStatus.FORBIDDEN)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             AppMessages.FAILURE.INVALID_PHONE_NUMBER,
             HttpStatus.FORBIDDEN
           )
@@ -221,7 +221,7 @@ const updateAllMembers = async (req, res) => {
       return res
         .status(error.status)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             `${AppMessages.FAILURE.ALL_MEMBERS_UPDATE_FAIL} --> ${error.message}`,
             error.status
           )
@@ -231,7 +231,7 @@ const updateAllMembers = async (req, res) => {
     return res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .json(
-        responseHelpers.sendError(
+        responseHelper.sendError(
           `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} --> ${error.message}`,
           HttpStatus.INTERNAL_SERVER_ERROR
         )
