@@ -45,7 +45,7 @@ const getAllMembers = async (req, res) => {
     return res
       .status(HttpStatus.OK)
       .json(
-        responseHelpers.sendSuccess(
+        responseHelper.sendSuccess(
           AppMessages.SUCCESS.ALL_MEMBERS_RETRIEVED_SUCCESS,
           response
         )
@@ -55,7 +55,7 @@ const getAllMembers = async (req, res) => {
       return res
         .status(error.status)
         .json(
-          responseHelpers.sendError(
+          responseHelper.sendError(
             `${AppMessages.FAILURE.ALL_MEMBERS_RETRIEVED_FAIL} --> ${error.message}`,
             error.status
           )
@@ -65,7 +65,7 @@ const getAllMembers = async (req, res) => {
     return res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)
       .json(
-        responseHelpers.sendError(
+        responseHelper.sendError(
           `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} --> ${error.message}`,
           HttpStatus.INTERNAL_SERVER_ERROR
         )

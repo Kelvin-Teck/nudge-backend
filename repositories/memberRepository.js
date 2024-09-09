@@ -5,13 +5,17 @@ const createMember = async (data) => {
 };
 
 const getAllMembers = async () => {
-  const allMembers = await db.Member.find({}).sort({createdAt: -1});
+  const allMembers = await db.Member.find({})
+    .populate("user")
+    .sort({ createdAt: -1 });
 
   return allMembers;
 };
 
 const getSingleMemberById = async (id) => {
-  const memberInfo = await db.Member.findById(id);
+  const memberInfo = await db.Member.findById(id)
+    .populate("user")
+    .sort({ createdAt: -1 });
 
   return memberInfo;
 };

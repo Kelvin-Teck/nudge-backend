@@ -6,6 +6,8 @@ const memberRepository = require("../repositories/memberRepository");
 const HttpStatus = require("../utils/StatusCodes");
 
 const createMember = async (req, res) => {
+  const { userId } = req.query;
+  console.log(userId)
   const { fullName, dateOfBirth, email, phoneNumber } = req.body;
 
   const data = {
@@ -13,6 +15,7 @@ const createMember = async (req, res) => {
     dateOfBirth: new Date(dateOfBirth),
     email,
     phoneNumber,
+    user: userId
   };
 
   if (!data.phoneNumber.length === 11 || !data.phoneNumber.length === 14) {
@@ -23,7 +26,6 @@ const createMember = async (req, res) => {
   }
 
   const memberInRecord = await memberRepository.getSingleMember(data);
-  
 
   if (memberInRecord) {
     return responseHelper.newError(
@@ -32,7 +34,7 @@ const createMember = async (req, res) => {
     );
   }
 
-  await memberRepository.createMember(data); 
+  await memberRepository.createMember(data);
 };
 
 const getAllMembers = async (req, res) => {
@@ -75,23 +77,24 @@ const updateAllMembers = async (req, res) => {
   const updateData = req.body;
 
   const allMembers = await memberRepository.getAllMembers();
-  
-  if (allMembers.length > 0) {
 
+  if (allMembers.length > 0) {
     for (const member of allMembers) {
       // await memberRepository.getSingleMemberByIdAndUpdate(member.id, updateData);
 
       await addUpdateAllMembersToQueue(member.id, updateData);
-      
     }
-
-  }else return responseHelper.newError(AppMessages.INFO.MEMBER_DOES_NOT_EXIST, HttpStatus.NOT_FOUND)
-}
+  } else
+    return responseHelper.newError(
+      AppMessages.INFO.MEMBER_DOES_NOT_EXIST,
+      HttpStatus.NOT_FOUND
+    );
+};
 
 module.exports = {
   createMember,
   getAllMembers,
   getSingleMember,
   updateSingleMember,
-  updateAllMembers
+  updateAllMembers,
 };

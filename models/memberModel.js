@@ -4,7 +4,7 @@ const memberSchema = mongoose.Schema(
   {
     fullName: { type: String, required: true },
     dateOfBirth: { type: Date, required: true },
-    phoneNumber: { type: String, required: true, minLength: 11, maxLength: 14 },
+    phoneNumber: { type: String, required: true, unique: true, minLength: 11, maxLength: 14 },
     email: { type: String, required: true, unique: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
