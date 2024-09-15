@@ -239,10 +239,82 @@ const updateAllMembers = async (req, res) => {
   }
 };
 
+const deleteSingleMember = async (req, res) => {
+  try {
+    const response = await memberService.deleteSingleMember(req);
+
+    return res
+      .status(HttpStatus.OK)
+      .json(
+        responseHelper.sendSuccess(
+          AppMessages.SUCCESS.DELETE_USER_SUCCESS,
+          response
+        )
+      );
+  } catch (error) {
+    if (error.status) {
+      return res
+        .status(error.status)
+        .json(
+          responseHelper.sendError(
+            `${AppMessages.FAILURE.DELETE_USER_FAIL} --> ${error.message}`,
+            error.status
+          )
+        );
+    }
+
+    return res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .json(
+        responseHelper.sendError(
+          `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} --> ${error.message}`,
+          HttpStatus.INTERNAL_SERVER_ERROR
+        )
+      );
+  }
+};
+
+const deleteAllMembers = async (req, res) => {
+  try {
+    const response = await memberService.deleteAllMembers(req);
+
+    return res
+      .status(HttpStatus.OK)
+      .json(
+        responseHelper.sendSuccess(
+          AppMessages.SUCCESS.DELETE_ALL_USERS_SUCCESS,
+          response
+        )
+      );
+  } catch (error) {
+    if (error.status) {
+      return res
+        .status(error.status)
+        .json(
+          responseHelper.sendError(
+            `${AppMessages.FAILURE.DELETE_ALL_USERS_FAIL} --> ${error.message}`,
+            error.status
+          )
+        );
+    }
+
+    return res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .json(
+        responseHelper.sendError(
+          `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} --> ${error.message}`,
+          HttpStatus.INTERNAL_SERVER_ERROR
+        )
+      );
+  }
+};
+
 module.exports = {
   createMember,
   getAllMembers,
   getSingleMember,
   updateSingleMember,
   updateAllMembers,
+  deleteSingleMember,
+  deleteAllMembers,
 };

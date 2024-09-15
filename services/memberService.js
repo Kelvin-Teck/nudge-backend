@@ -1,13 +1,16 @@
 const AppMessages = require("../common/appMessages");
 const updateAllMembersQueue = require("../config/queue");
 const responseHelper = require("../helpers/responseHelper");
-const { addUpdateAllMembersToQueue } = require("../queues/memberQueues");
+const {
+  addUpdateAllMembersToQueue,
+  addDeleteAllMembersToQueue,
+} = require("../queues/memberQueues");
 const memberRepository = require("../repositories/memberRepository");
 const HttpStatus = require("../utils/StatusCodes");
 
 const createMember = async (req, res) => {
   const { userId } = req.query;
-  console.log(userId)
+
   const { fullName, dateOfBirth, email, phoneNumber } = req.body;
 
   const data = {
@@ -15,7 +18,7 @@ const createMember = async (req, res) => {
     dateOfBirth: new Date(dateOfBirth),
     email,
     phoneNumber,
-    user: userId
+    user: userId,
   };
 
   if (!data.phoneNumber.length === 11 || !data.phoneNumber.length === 14) {
@@ -91,10 +94,36 @@ const updateAllMembers = async (req, res) => {
     );
 };
 
+const deleteSingleMember = async (req) => {
+  const { id } = req.params;
+
+  const memberInfo = await memberRepository.getSingleMemberById(id);
+
+  if (!memberInfo) {
+    return responseHelper.newError(AppMessages.INFO.MEMBER_DOES_NOT_EXIST);
+  }
+
+  await memberRepository.deleteSingleMember(id);
+};
+
+const deleteAllMembers = async (req, res) => {
+  const allMembers = await memberRepository.getAllMembers();
+
+  if (allMembers.length > 0) {
+    for (const member of allMembers) {
+      await addDeleteAllMembersToQueue(member._id);
+    }
+  }
+
+
+};
+
 module.exports = {
   createMember,
   getAllMembers,
   getSingleMember,
   updateSingleMember,
   updateAllMembers,
+  deleteSingleMember,
+  deleteAllMembers,
 };

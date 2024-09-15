@@ -109,4 +109,143 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getSingleUser, getAllUsers };
+const updateSingleUser = async (req, res) => {
+  try {
+    const response = await UserService.updateSingleUser(req);
+
+    return res
+      .status(HttpStatus.OK)
+      .json(
+        responseHelper.sendSuccess(
+          AppMessages.SUCCESS.UPDATE_USER_SUCCESS,
+          response
+        )
+      );
+  } catch (error) {
+    console.log(error.errors);
+
+    if (error.status) {
+      return res
+        .status(error.status)
+        .json(responseHelper.sendError(error.message, error.status));
+    }
+
+    return res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .json(
+        responseHelper.sendError(
+          `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} - ${error.message}`,
+          HttpStatus.INTERNAL_SERVER_ERROR
+        )
+      );
+  }
+};
+
+const updateAllUsers = async (req, res) => {
+   try {
+     const response = await UserService.updateAllUsers(req);
+
+     return res
+       .status(HttpStatus.OK)
+       .json(
+         responseHelper.sendSuccess(
+           AppMessages.SUCCESS.UPDATE_ALL_USERS_SUCCESS,
+           response
+         )
+       );
+   } catch (error) {
+     console.log(error.errors);
+
+     if (error.status) {
+       return res
+         .status(error.status)
+         .json(responseHelper.sendError(error.message, error.status));
+     }
+
+     return res
+       .status(HttpStatus.INTERNAL_SERVER_ERROR)
+       .json(
+         responseHelper.sendError(
+           `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} - ${error.message}`,
+           HttpStatus.INTERNAL_SERVER_ERROR
+         )
+       );
+   }
+}
+
+const deleteSingleUser = async (req, res) => {
+  try {
+    const response = await UserService.deleteSingleUser(req);
+
+    return res
+      .status(HttpStatus.OK)
+      .json(
+        responseHelper.sendSuccess(
+          AppMessages.SUCCESS.DELETE_USER_SUCCESS,
+          response
+        )
+      );
+  } catch (error) {
+    console.log(error.errors);
+
+    if (error.status) {
+      return res
+        .status(error.status)
+        .json(responseHelper.sendError(error.message, error.status));
+    }
+
+    return res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .json(
+        responseHelper.sendError(
+          `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} - ${error.message}`,
+          HttpStatus.INTERNAL_SERVER_ERROR
+        )
+      );
+  }
+};
+
+const deleteAllUsers = async (req, res) => {
+  try {
+    const response = await UserService.deleteAllUser(req);
+
+    return res
+      .status(HttpStatus.OK)
+      .json(
+        responseHelper.sendSuccess(
+          AppMessages.SUCCESS.DELETE_ALL_USERS_SUCCESS,
+          response
+        )
+      );
+  } catch (error) {
+    if (error.status) {
+      return res
+        .status(error.status)
+        .json(
+          responseHelper.sendError(
+            AppMessages.FAILURE.DELETE_USER_FAIL + error.message,
+            error.status
+          )
+        );
+    }
+
+    return res
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .json(
+        responseHelper.sendError(
+          `${AppMessages.FAILURE.INTERNAL_SERVER_ERROR} - ${error.message}`,
+          HttpStatus.INTERNAL_SERVER_ERROR
+        )
+      );
+  }
+};
+
+module.exports = {
+  createUser,
+  getSingleUser,
+  getAllUsers,
+  updateSingleUser,
+  updateAllUsers,
+  deleteSingleUser,
+  deleteAllUsers,
+};

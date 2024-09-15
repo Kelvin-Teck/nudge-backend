@@ -1,15 +1,21 @@
-const express = require('express');
-const member = require('../controllers/MemberController');
-const  router = express.Router();
+const express = require("express");
+const Member = require("../controllers/MemberController");
+const router = express.Router();
 
-// Birthday Get Requests
-router.get('/all-members', member.getAllMembers)
-    .get("/single-member/:id", member.getSingleMember);
+// Member Get Requests
+router
+  .get("/all-members", Member.getAllMembers)
+  .get("/single-member/:id", Member.getSingleMember);
 
-// Birthday Post Requests
-router.post('/create-member', member.createMember)
-// Birthday Patch Requests
-router.patch('/update-single-member/:id', member.updateSingleMember)
-    .patch('/update-all-members', member.updateAllMembers)
+// Member Post Requests
+router.post("/create-member", Member.createMember);
+// Member Patch Requaests
+router
+  .patch("/update-single-member/:id", Member.updateSingleMember)
+  .patch("/update-all-members", Member.updateAllMembers);
+// Member Delete Route
+router
+  .delete("/delete-single-member/:id", Member.deleteSingleMember)
+  .delete("/delete-all-members", Member.deleteAllMembers);
 
 module.exports = router;

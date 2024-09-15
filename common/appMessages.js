@@ -16,6 +16,10 @@ const AppMessages = {
     ALL_MEMBERS_UPDATE_FAIL: "Failed to update All Members",
     USER_CREATE_FAIL: "Failed to Create User",
     BULK_USER_CREATE_FAIL: "Failed to Create Bulk Users",
+    UPDATE_USER_FAIL: "Failed to Update this user",
+    UPDATE_ALL_USERS_FAIL: "Failed to Update All Users",
+    DELETE_USER_FAIL: "Failed to Delete User",
+    DELETE_ALL_USERS_FAIL: "All Users have been Deleted Successfully",
   },
   SUCCESS: {
     LOGIN: "Login successful.",
@@ -35,6 +39,10 @@ const AppMessages = {
     ALL_MEMBERS_UPDATE_SUCCESS: "All Members have been updated successfully",
     USER_CREATE_SUCCESS: "User Created Successfully",
     BULK_USERS_CREATE_SUCCESS: "Bulk Users Created Successfully",
+    UPDATE_USER_SUCCESS: "This User has been Updated Successfully",
+    UPDATE_ALL_USERS_SUCCESS: "ALL Users have been Updated Successfully",
+    DELETE_USER_SUCCESS: "This User has been Deleted Successfully",
+    DELETE_ALL_USERS_SUCCESS: "All Users Deleted Successfully",
   },
   INFO: {
     INVALID_OPERATION: "Invalid operation.",
@@ -43,6 +51,8 @@ const AppMessages = {
     MEMBER_DOES_NOT_EXIST: "Sorry this Member does not exist",
     EMAIL_EXISTS: "An account already exists with this email",
     USER_EXIST: "An account already exists with this User",
+    USER_DOES_NOT_EXIST: "This user does not exist",
+    USER_DOES_NOT_EXIST: "This user does not exist",
   },
 };
 

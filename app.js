@@ -43,10 +43,6 @@ const { connectToDB } = require("./config/databases/");
 
 // check the status of the server
 app.get("/", (req, res) => res.send("Server is up and running!!!"));
-// app.get('/test', async (req, res) => {
-//   const job = await updateAllMembersQueue.add('test', { bar: 'foo' });
-//   console.log(job);
-// })
 
 // Routes middleware
 app.use("/api/v1/member", memberRoutes);
