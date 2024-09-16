@@ -86,6 +86,8 @@ const createMember = async (req, res) => {
         )
       );
   } catch (error) {
+    
+
     if (error.code === 11000) {
       return res
         .status(HttpStatus.CONFLICT)

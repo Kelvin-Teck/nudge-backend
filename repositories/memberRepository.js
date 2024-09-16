@@ -46,7 +46,11 @@ const getSingleMember = async (data) => {
 
 const deleteSingleMember = async (id) => {
   await db.Member.deleteOne({ _id: id });
-}
+};
+
+const writeToMemberLog = async (status, message) => {
+  await db.MemberLog.create({ status, message });
+};
 
 module.exports = {
   createMember,
@@ -56,5 +60,6 @@ module.exports = {
   getSingleMemberByIdAndUpdate,
   getAllMembersWithUser,
   getSingleMemberByIdWithUser,
-  deleteSingleMember
+  deleteSingleMember,
+  writeToMemberLog,
 };

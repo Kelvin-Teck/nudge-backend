@@ -54,6 +54,23 @@ const AppMessages = {
     USER_DOES_NOT_EXIST: "This user does not exist",
     USER_DOES_NOT_EXIST: "This user does not exist",
   },
+  LOG: {
+    GET_ALL_MEMBERS_SUCCESS: "",
+    GET_ALL_MEMBERS_FAIL: "",
+    GET_MEMBER_SUCCESS: "",
+    GET_ALL_MEMBERS_FAIL: "",
+    CREATE_MEMBER_SUCCESS: "",
+    CREATE_MEMBER_FAIL: "",
+    UPDATE_MEMBER_SUCCESS: "",
+    UPDATE_MEMBER_FAIL: "",
+    UPDATE_ALL_MEMBERS_SUCCESS: "",
+    UPDATE_ALL_MEMBERS_FAIL: "",
+    DELETE_MEMBER_SUCCESS: "",
+    DELETE_MEMBER_FAIL: "",
+    DELETE_ALL_MEMBERS_SUCCESS: "",
+    DELETE_ALL_MEMBERS_FAIL: "",
+    
+  },
 };
 
 module.exports = AppMessages;

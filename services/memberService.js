@@ -31,6 +31,11 @@ const createMember = async (req, res) => {
   const memberInRecord = await memberRepository.getSingleMember(data);
 
   if (memberInRecord) {
+    await memberRepository.writeToMemberLog(
+      "fail",
+      AppMessages.INFO.MEMBER_EXIST
+    );
+
     return responseHelper.newError(
       AppMessages.INFO.MEMBER_EXIST,
       HttpStatus.NOT_FOUND
@@ -38,6 +43,10 @@ const createMember = async (req, res) => {
   }
 
   await memberRepository.createMember(data);
+  await memberRepository.writeToMemberLog(
+    "success",
+    AppMessages.SUCCESS.MEMBER_CREATE_SUCCESS
+  );
 };
 
 const getAllMembers = async (req, res) => {
@@ -114,8 +123,6 @@ const deleteAllMembers = async (req, res) => {
       await addDeleteAllMembersToQueue(member._id);
     }
   }
-
-
 };
 
 module.exports = {
